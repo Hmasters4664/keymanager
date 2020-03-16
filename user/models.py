@@ -14,7 +14,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(_('email address'), unique=True)
     is_active = models.BooleanField(_('active'), default=True)
     objects = UserManager()
-    uuid = models.UUIDField(editable=False, unique=True)
+    uuid = models.UUIDField(editable=False, unique=True, default=uuid.uuid4)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
