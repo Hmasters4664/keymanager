@@ -51,13 +51,13 @@ class PutKey(generics.CreateAPIView):
         return Response(status=status.HTTP_200_OK)
 
 
-class GetKey(generics.CreateAPIView):
-    permission_classes = [IsAuthenticated]
-    serializer_class = KeySerializer
+#class GetKey(generics.CreateAPIView):
+#   permission_classes = [IsAuthenticated]
+#    serializer_class = KeySerializer
 
-    def perform_create(self, serializer):
-        user = get_object_or_404(User, id=self.request.user.id)
-        return serializer.save(user=user)
+#   def perform_create(self, serializer):
+#       user = get_object_or_404(User, id=self.request.user.id)
+#       return serializer.save(user=user)
 
 
 class UpdateKey(generics.UpdateAPIView):
@@ -67,7 +67,7 @@ class UpdateKey(generics.UpdateAPIView):
     lookup_field = 'slug'
 
     def get_object(self, slug):
-        return get_object_or_404(Key, slug = slug)
+        return get_object_or_404(Key, slug=slug)
 
     def update(self, request, *args, **kwargs):
         slug_val = self.kwargs['slug']
